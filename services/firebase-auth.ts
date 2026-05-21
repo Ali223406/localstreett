@@ -1,11 +1,11 @@
 import {
-  createUserWithEmailAndPassword,
+  createUserWithEmailAndPassword, // Permet de créer un compte avec email et mot de passe
   getAuth,
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
 
-import app from "./firebase-config";
+import app from "./firebase-config"; // Import de la configuration Firebase
 import { createWithId } from "./firebase-database";
 
 const auth = getAuth(app);
