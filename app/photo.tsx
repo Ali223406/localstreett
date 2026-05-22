@@ -167,7 +167,7 @@ export default function Photo() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#111",
+    backgroundColor: "#0B0B0F",
   },
 
   camera: {
@@ -178,34 +178,48 @@ const styles = StyleSheet.create({
 
   button: {
     marginBottom: 40,
-    backgroundColor: "red",
-    padding: 15,
+    backgroundColor: "#F72585",
+    paddingVertical: 14,
+    paddingHorizontal: 22,
     borderRadius: 30,
+    shadowColor: "#F72585",
+    shadowOpacity: 0.4,
+    shadowRadius: 10,
+    elevation: 8,
   },
 
   preview: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    paddingHorizontal: 20,
   },
 
   image: {
     width: 320,
     height: 450,
     borderRadius: 20,
+    borderWidth: 2,
+    borderColor: "#1f1f2e",
   },
 
   publish: {
     marginTop: 20,
-    backgroundColor: "green",
-    padding: 15,
-    borderRadius: 10,
+    backgroundColor: "#F72585",
+    paddingVertical: 14,
+    paddingHorizontal: 25,
+    borderRadius: 12,
+    shadowColor: "#F72585",
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    elevation: 6,
   },
 
   retake: {
-    marginTop: 10,
-    backgroundColor: "#444",
-    padding: 10,
+    marginTop: 12,
+    backgroundColor: "#1f1f2e",
+    paddingVertical: 10,
+    paddingHorizontal: 18,
     borderRadius: 10,
   },
 });

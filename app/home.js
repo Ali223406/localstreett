@@ -4,12 +4,12 @@ import { useFocusEffect } from "@react-navigation/native";
 import { useRouter } from "expo-router";
 import { useCallback, useState } from "react";
 import {
-    FlatList,
-    Image,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from "react-native";
 
 import { getAllArtworks, likeArtwork } from "@/services/artwork-service";
@@ -120,60 +120,83 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#111",
+    backgroundColor: "#0B0B0F",
     paddingTop: 50,
   },
 
   title: {
-    color: "white",
-    fontSize: 24,
+    color: "#7209B7",
+    fontSize: 26,
+    fontWeight: "bold",
     textAlign: "center",
-    marginBottom: 10,
+    marginBottom: 15,
   },
 
   card: {
-    backgroundColor: "#222",
-    margin: 10,
-    padding: 10,
-    borderRadius: 10,
+    backgroundColor: "#141420",
+    marginHorizontal: 12,
+    marginBottom: 15,
+    borderRadius: 18,
+    overflow: "hidden",
+
+    shadowColor: "#000",
+    shadowOpacity: 0.25,
+    shadowRadius: 10,
+    elevation: 5,
   },
 
   image: {
     width: "100%",
-    height: 200,
-    borderRadius: 10,
+    height: 220,
   },
 
   author: {
-    color: "white",
-    marginTop: 5,
+    color: "#fff",
+    marginTop: 10,
+    marginHorizontal: 12,
+    fontSize: 14,
+    fontWeight: "600",
   },
 
   likes: {
     color: "#F72585",
-    marginVertical: 5,
+    marginTop: 6,
+    marginHorizontal: 12,
+    fontWeight: "bold",
   },
 
   mapText: {
-    color: "#3A0CA3",
-    marginTop: 5,
+    color: "#7209B7",
+    marginTop: 10,
+    marginBottom: 12,
+    marginHorizontal: 12,
+    fontWeight: "600",
   },
 
   addButton: {
     position: "absolute",
     bottom: 30,
     right: 20,
-    backgroundColor: "#F72585",
-    padding: 15,
-    borderRadius: 50,
+    backgroundColor: "#f72585",
+    width: 58,
+    height: 58,
+    borderRadius: 29,
+    justifyContent: "center",
+    alignItems: "center",
+
+    shadowColor: "#f72585",
+    shadowOpacity: 0.4,
+    shadowRadius: 10,
+    elevation: 8,
   },
 
   logout: {
     position: "absolute",
     top: 50,
     right: 20,
-    backgroundColor: "#444",
-    padding: 10,
-    borderRadius: 8,
+    backgroundColor: "#f72585",
+    paddingVertical: 8,
+    paddingHorizontal: 14,
+    borderRadius: 12,
   },
 });

@@ -24,17 +24,22 @@ export default function Splash() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#111",
+    backgroundColor: "#0B0B0F",
     justifyContent: "center",
     alignItems: "center",
   },
+
   title: {
-    color: "#fff",
-    fontSize: 32,
+    color: "#7209B7",
+    fontSize: 36,
     fontWeight: "bold",
+    letterSpacing: 1,
   },
+
   subtitle: {
-    color: "#999",
+    color: "#F72585",
     marginTop: 10,
+    fontSize: 14,
+    fontWeight: "500",
   },
 });
