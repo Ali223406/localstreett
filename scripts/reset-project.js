@@ -6,17 +6,17 @@
  * You can remove the `reset-project` script from package.json and safely delete this file after running it.
  */
 
-const fs = require("fs");
+const fs = require("fs");      // Import the fs module for file system operations, which will be used to create directories, move or delete existing directories, and write new files as part of the project reset process.
 const path = require("path");
-const readline = require("readline");
+const readline = require("readline"); // Import the path module for handling file paths, which will be used to construct paths for the old directories, the new app directory, and the example directory. The readline module is imported to create an interface for reading user input from the command line, which will be used to ask the user whether they want to move existing files to /app-example or delete them during the reset process.
 
 const root = process.cwd();
-const oldDirs = ["app", "components", "hooks", "constants", "scripts"];
+const oldDirs = ["app", "components", "hooks", "constants", "scripts"];  // Define the root directory as the current working directory and an array of old directories that will be moved or deleted during the reset process. These directories represent the existing structure of the project that will be reset to a blank state.
 const exampleDir = "app-example";
 const newAppDir = "app";
 const exampleDirPath = path.join(root, exampleDir);
 
-const indexContent = `import { Text, View } from "react-native";
+const indexContent = `import { Text, View } from "react-native"; 
 
 export default function Index() {
   return (
@@ -40,12 +40,12 @@ export default function RootLayout() {
 }
 `;
 
-const rl = readline.createInterface({
+const rl = readline.createInterface({  // Create a readline interface to read user input from the command line. The input is set to process.stdin, which allows the script to read input from the terminal, and the output is set to process.stdout, which allows the script to write output back to the terminal. This interface will be used to ask the user whether they want to move existing files to /app-example or delete them during the reset process.
   input: process.stdin,
   output: process.stdout,
 });
 
-const moveDirectories = async (userInput) => {
+const moveDirectories = async (userInput) => {   // Define an asynchronous function called moveDirectories that takes the user's input as an argument. This function will handle the logic for moving existing directories to /app-example or deleting them based on the user's choice, as well as creating the new /app directory and its contents.
   try {
     if (userInput === "y") {
       // Create the app-example directory
@@ -94,15 +94,15 @@ const moveDirectories = async (userInput) => {
       }`
     );
   } catch (error) {
-    console.error(`❌ Error during script execution: ${error.message}`);
+    console.error(`❌ Error during script execution: ${error.message}`); // Log any errors that occur during the execution of the moveDirectories function, which could include issues with file system operations such as creating directories, moving or deleting files, or writing new files. The error message will provide details about what went wrong, allowing the user to troubleshoot and resolve any issues that arise during the project reset process.
   }
 };
 
 rl.question(
-  "Do you want to move existing files to /app-example instead of deleting them? (Y/n): ",
+  "Do you want to move existing files to /app-example instead of deleting them? (Y/n): ",   // Prompt the user with a question asking whether they want to move existing files to /app-example instead of deleting them. The user's input will be read from the command line, and the response will determine whether the existing directories are moved or deleted during the reset process. The default answer is "Y" (yes), which means that if the user simply presses Enter without typing anything, the script will proceed with moving the existing files to /app-example.
   (answer) => {
     const userInput = answer.trim().toLowerCase() || "y";
-    if (userInput === "y" || userInput === "n") {
+    if (userInput === "y" || userInput === "n") {  // Check if the user's input is either "y" (yes) or "n" (no). If the input is valid, the moveDirectories function is called with the user's input as an argument to execute the appropriate actions based on their choice. If the input is invalid, an error message is logged, and the readline interface is closed without making any changes to the project.
       moveDirectories(userInput).finally(() => rl.close());
     } else {
       console.log("❌ Invalid input. Please enter 'Y' or 'N'.");

@@ -1,21 +1,21 @@
-import { useEffect, useState } from 'react';
-import { useColorScheme as useRNColorScheme } from 'react-native';
+import { useEffect, useState } from 'react';      // Import the useEffect and useState hooks from React, which will be used to manage state and side effects in the custom useColorScheme hook defined in this file. The useState hook will be used to track whether the component has hydrated on the client side, and the useEffect hook will be used to set the hydrated state to true after the component mounts, allowing the hook to determine when it can safely access the color scheme information from react-native without causing issues during server-side rendering or static rendering on the web.
+import { useColorScheme as useRNColorScheme } from 'react-native';     // Import the useColorScheme hook from react-native and rename it to useRNColorScheme to avoid naming conflicts with the custom useColorScheme hook defined in this file. The useRNColorScheme hook will be used to access the current color scheme (light or dark) of the device, but since this information is not available during static rendering on the web, the custom useColorScheme hook will manage a hydrated state to determine when it can safely return the actual color scheme from react-native or default to 'light' during static rendering.
 
 /**
  * To support static rendering, this value needs to be re-calculated on the client side for web
  */
-export function useColorScheme() {
-  const [hasHydrated, setHasHydrated] = useState(false);
+export function useColorScheme() {        // Define a custom hook called useColorScheme that will determine the current color scheme (light or dark) for the web platform. This hook uses a state variable called hasHydrated to track whether the component has been hydrated on the client side, and an effect to set this state to true after the component mounts. The hook then checks if it has hydrated; if it has, it returns the actual color scheme from react-native using the useRNColorScheme hook. If it has not hydrated (which means it's still in the static rendering phase), it returns 'light' as a default color scheme, ensuring that the application can render without errors during static rendering on the web while still providing accurate color scheme information once hydration is complete.
+  const [hasHydrated, setHasHydrated] = useState(false);   // Initialize a state variable called hasHydrated using the useState hook, starting with a default value of false. This variable will be used to track whether the component has been hydrated on the client side, which is important for determining when it is safe to access the color scheme information from react-native without causing issues during server-side rendering or static rendering on the web.
 
-  useEffect(() => {
-    setHasHydrated(true);
+  useEffect(() => {           // Use the useEffect hook to perform a side effect after the component mounts. This effect will set the hasHydrated state to true, indicating that the component has been hydrated on the client side and it is now safe to access the color scheme information from react-native. The empty dependency array ensures that this effect only runs once, after the initial render of the component.
+    setHasHydrated(true);       // Set the hasHydrated state to true, indicating that the component has been hydrated on the client side. This allows the hook to determine when it can safely return the actual color scheme from react-native instead of defaulting to 'light' during static rendering on the web.
   }, []);
 
-  const colorScheme = useRNColorScheme();
+  const colorScheme = useRNColorScheme(); // Use the useRNColorScheme hook to get the current color scheme (light or dark) from react-native. This value will be used to determine the appropriate color scheme to return from the custom useColorScheme hook, depending on whether the component has hydrated or not.
 
-  if (hasHydrated) {
-    return colorScheme;
+  if (hasHydrated) {     // Check if the component has hydrated on the client side. If it has, return the actual color scheme obtained from react-native using the useRNColorScheme hook. This allows the application to use the correct color scheme based on the user's device settings once hydration is complete.
+    return colorScheme; // Return the actual color scheme obtained from react-native using the useRNColorScheme hook, which will be either 'light' or 'dark' depending on the user's device settings. This value will be used by components that consume the useColorScheme hook to adjust their styles accordingly for better user experience in both light and dark modes.
   }
 
-  return 'light';
+  return 'light'; // If the component has not hydrated (which means it's still in the static rendering phase), return 'light' as a default color scheme. This ensures that the application can render without errors during static rendering on the web, while still providing accurate color scheme information once hydration is complete and the actual color scheme can be accessed from react-native.
 }

@@ -1,6 +1,10 @@
 {
-  "expo": {
-    "plugins": [
+  
+  "expo": {         // The root object of the Expo configuration file, which contains all the settings and configurations for the Expo project. This object is used by Expo to determine how to build, run, and manage the application across different platforms (iOS, Android, web) and includes various properties such as name, slug, plugins, and other configurations that define the behavior and features of the Expo app.
+    "name": "LocalStreetArt",
+    "slug": "local-street-art",
+
+    "plugins": [      // An array of plugins that are used in the Expo project. Plugins are additional packages or modules that can be added to an Expo project to provide extra functionality or features. In this case, two plugins are being used: "expo-splash-screen" for managing the splash screen of the app, and "expo-location" for handling location permissions and services. Each plugin can have its own configuration options specified in an object following the plugin name, allowing developers to customize the behavior of the plugin according to their app's requirements.
       [
         "expo-splash-screen",
         {
@@ -14,7 +18,7 @@
         }
       ],
       [
-        "expo-location",
+        "expo-location",          // The "expo-location" plugin is used to handle location services and permissions in the Expo app. The configuration object for this plugin includes a property called "locationWhenInUsePermission", which specifies the message that will be shown to users when the app requests permission to access their location while the app is in use. In this case, the message is set to "Allow LocalStreetArt to access your location", which will be displayed in the permission prompt when the app requests location access from the user.
         {
           "locationWhenInUsePermission": "Allow LocalStreetArt to access your location"
         }

@@ -1,5 +1,5 @@
-import { Redirect } from "expo-router";
+import { Redirect } from "expo-router"; // Import the Redirect component from expo-router, which will be used to programmatically navigate to a different screen (in this case, the splash screen) when the Index component is rendered. This allows for a seamless user experience by automatically directing users to the appropriate screen based on the application's routing configuration.
 
-export default function Index() {
-  return <Redirect href="/splash" />;
+export default function Index() {   // Define the Index component, which serves as the default entry point for the application. When this component is rendered, it immediately redirects the user to the "/splash" screen using the Redirect component from expo-router. This is typically used to show a splash screen or loading screen while the app initializes or checks for authentication status before navigating to the main content of the app.
+  return <Redirect href="/splash" />;  // Use the Redirect component from expo-router to navigate to the "/splash" screen when the Index component is rendered. This allows the application to display a splash screen or loading screen while it performs any necessary initialization tasks, such as checking for user authentication or loading resources, before navigating to the main content of the app.
 }
